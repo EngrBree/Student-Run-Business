@@ -23,7 +23,7 @@ public class ReportService {
         this.reportRepository = reportRepository;
         this.orderManageClient = orderManageClient;
     }
-    public Mono<Report>createReport(){
+    public Mono<Report>createReport(Report report){
         return orderManageClient.getAllOrders()
                 .flatMap(this::populateOrderItems)
                 .collectList()

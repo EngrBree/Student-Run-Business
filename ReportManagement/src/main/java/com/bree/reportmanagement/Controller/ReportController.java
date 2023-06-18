@@ -3,10 +3,7 @@ package com.bree.reportmanagement.Controller;
 import com.bree.reportmanagement.Model.Report;
 import com.bree.reportmanagement.Service.ReportService;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -21,7 +18,7 @@ public class ReportController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Report> newReport(){
-        return reportService.createReport();
+    public Mono<Report> newReport(@RequestBody Report report){
+        return reportService.createReport(report);
     }
 }
